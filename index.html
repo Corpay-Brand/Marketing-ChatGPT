@@ -3,131 +3,168 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Comdata LP Prototype</title>
+  <title>Comdata LP Redesign Prototype</title>
   <style>
-    :root{--navy:#071f44;--blue:#294a7a;--blue2:#213d69;--gold:#f7b32b;--text:#eaf1fb;--muted:#a9bdd8}
-    *{box-sizing:border-box} body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--navy);color:var(--text);line-height:1.4}
-    .container{max-width:1180px;margin:0 auto;padding:0 20px}
-    .kicker{letter-spacing:.35em;text-transform:uppercase;color:var(--gold);font-weight:700;font-size:.82rem}
-    h1,h2{margin:0 0 12px} h1{font-size:clamp(2rem,5vw,3.6rem)} h2{font-size:clamp(1.6rem,3.2vw,2.7rem)}
-    .hero{padding:72px 0 48px;border-left:14px solid var(--gold)} .hero p{max-width:760px;color:#c9d7ea;font-size:1.25rem}
-    .cta{display:inline-block;background:var(--gold);color:#071f44;padding:14px 28px;font-weight:800;border-radius:2px;text-decoration:none;letter-spacing:.14em;text-transform:uppercase;margin-top:16px}
+    :root {
+      --navy-900: #061a3a;
+      --navy-800: #0b2a57;
+      --navy-700: #163969;
+      --card: #1f3f70;
+      --text: #edf3ff;
+      --muted: #b5c7e3;
+      --gold: #f6b02d;
+      --line: #3d5f90;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background: var(--navy-900);
+      line-height: 1.45;
+    }
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 28px; }
+    .kicker { text-transform: uppercase; letter-spacing: .35em; color: var(--gold); font-weight: 700; font-size: .82rem; }
+    .hero { border-left: 16px solid var(--gold); padding: 86px 0 64px; background: linear-gradient(180deg, #0a234c 0%, #071a3a 100%); }
+    h1 { font-size: clamp(2.4rem, 5vw, 5rem); margin: 10px 0 24px; line-height: 1.05; }
+    .lead { max-width: 980px; color: var(--muted); font-size: clamp(1.15rem, 2vw, 1.85rem); }
+    .btn { display:inline-block; margin-top:24px; padding:15px 30px; background:var(--gold); color:#0c2650; text-decoration:none; font-weight:800; text-transform:uppercase; letter-spacing:.2em; border-radius:2px; }
 
-    .section{padding:54px 0}
-    .intro{color:#c4d3e8;font-size:1.35rem;font-style:italic;margin-bottom:20px}
-    .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .card{background:var(--blue2);border:1px solid #3f5c8b;padding:26px 24px;display:flex;flex-direction:column}
-    .card.popular{background:var(--blue);position:relative;outline:6px solid #38598c}
-    .badge{position:absolute;top:16px;right:16px;background:var(--gold);color:#0c244f;padding:10px 14px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.8rem}
-    .plan-title{font-size:2rem;letter-spacing:.1em;font-weight:800;margin:8px 0}
-    .sub{color:var(--muted);font-style:italic;font-size:1.05rem;margin:0 0 22px}
-    .price{font-size:4rem;font-weight:800;color:#fff;line-height:1}
-    .price.pop{color:var(--gold)}
-    .small{color:var(--muted);margin:6px 0 18px}
-    .rule{border:none;height:1px;background:#496390;margin:12px 0 16px}
-    ul{padding-left:18px;margin:0 0 22px} li{margin:8px 0;color:#d8e4f6}
-    .card .cta{margin-top:auto;text-align:center;width:100%}
+    .section { padding: 68px 0; }
+    h2 { font-size: clamp(2rem, 3.3vw, 3.3rem); margin: 8px 0 14px; }
+    .subhead { color: var(--muted); font-size: clamp(1.06rem, 1.7vw, 1.6rem); font-style: italic; margin-bottom: 28px; }
 
-    .map{display:grid;grid-template-columns:1.1fr 1fr;gap:34px;margin-top:20px}
-    .stack .box{background:#2f4f80;border:2px solid var(--gold);padding:26px;margin-bottom:16px}
-    .stack h3{margin:0;font-size:2rem}
-    .stack p{margin:10px 0 0;color:#c7d7ef;font-style:italic}
-    .list .item{margin-bottom:24px}
-    .num{font-size:2.3rem;color:var(--gold);font-weight:900;display:inline-block;width:72px}
-    .list h4{display:inline-block;margin:0;font-size:2rem}
-    .list p{margin:8px 0 0 72px;color:#c4d4ec}
+    .plans { display:grid; grid-template-columns:repeat(3, minmax(260px,1fr)); gap:24px; }
+    .plan { background: var(--card); border:1px solid var(--line); padding:28px; display:flex; flex-direction:column; min-height: 680px; }
+    .plan.pop { background:#2b4e81; outline:6px solid #395c8f; position:relative; }
+    .tag { position:absolute; top:16px; right:16px; background:var(--gold); color:#09224a; padding:10px 14px; font-size:.82rem; font-weight:900; letter-spacing:.2em; text-transform:uppercase; }
+    .plan h3 { margin:8px 0 10px; text-transform:uppercase; letter-spacing:.08em; font-size: clamp(1.9rem, 2.3vw, 2.6rem); }
+    .desc { color: var(--muted); font-style: italic; font-size: 1.07rem; min-height: 64px; }
+    .price { font-size: clamp(3.2rem, 5vw, 5.2rem); font-weight: 900; line-height: 1; margin-top: 8px; }
+    .pop .price { color: var(--gold); }
+    .meta { color: var(--muted); margin-bottom: 10px; font-size: 1.8rem; }
+    .fine { color:#8fa8cb; margin-bottom: 14px; }
+    hr { border:none; height:1px; background:var(--line); margin:16px 0 14px; }
+    ul { margin:0 0 22px; padding-left:20px; }
+    li { margin: 8px 0; }
+    .plan .btn { margin-top:auto; text-align:center; }
 
-    footer{padding:32px 0 56px;color:#8fa6c7}
-    @media(max-width:980px){.plans{grid-template-columns:1fr}.map{grid-template-columns:1fr}.hero{border-left-width:8px}}
+    .map { display:grid; grid-template-columns:1.05fr 1fr; gap:36px; margin-top: 18px; }
+    .frame { border:2px solid #264771; background:#082248; padding:18px; }
+    .slot { border:3px solid var(--gold); background:#2b4c7d; padding:24px; margin-bottom:16px; }
+    .slot h4 { margin:0 0 6px; font-size:2rem; }
+    .slot p { margin:0; color:#c7d8ee; font-style:italic; font-size:1.45rem; }
+    .point { margin-bottom: 26px; }
+    .n { font-size:3rem; color:var(--gold); font-weight:900; margin-right:16px; }
+    .pt { display:flex; align-items:flex-start; }
+    .pt h4 { margin:8px 0 0; font-size:2.3rem; }
+    .point p { margin:10px 0 0 72px; color:var(--muted); font-size:1.35rem; }
+
+    .notice { background:#0a2a58; border-top:1px solid var(--line); padding:16px 0; font-size:.95rem; color:#adc1de; }
+    code { background:#071f44; border:1px solid #365887; padding:2px 6px; border-radius:4px; color:#dbe8ff; }
+
+    @media (max-width: 1080px) {
+      .plans { grid-template-columns: 1fr; }
+      .plan { min-height: auto; }
+      .map { grid-template-columns: 1fr; }
+      .hero { border-left-width: 9px; }
+    }
   </style>
 </head>
 <body>
   <header class="hero">
-    <div class="container">
-      <div class="kicker">Internal review / paid search + lp</div>
-      <h1>Comdata LP Redesign Prototype</h1>
-      <p>Redesigned Comdata paid-search landing page using Fuelman’s high-performing structure, with Comdata-focused messaging and conversion-first section flow.</p>
-      <a class="cta" href="#plans">View Plan Comparison</a>
+    <div class="wrap">
+      <div class="kicker">Internal Review / Paid Search + LP</div>
+      <h1>Comdata LP Redesign</h1>
+      <p class="lead">Redesigned Comdata paid-search landing page to mirror the structure and plan-card visual style from the higher-performing Fuelman experience.</p>
+      <a class="btn" href="#plans">View Plan Comparison</a>
     </div>
   </header>
 
   <main>
-    <section id="plans" class="section">
-      <div class="container">
-        <div class="kicker">Comdata LP redesign / plan comparison component</div>
+    <section class="section" id="plans">
+      <div class="wrap">
+        <div class="kicker">Comdata LP Redesign / Plan Comparison Component</div>
         <h2>Find the fuel card that fits your fleet</h2>
-        <p class="intro">Choose from Simple Saver, Smart Fleet, or Total Advantage to manage fuel and savings for your fleet.</p>
+        <p class="subhead">Choose from Simple Saver, Smart Fleet, or Total Advantage to manage fuel and savings for your fleet.</p>
+
         <div class="plans">
-          <article class="card">
-            <h3 class="plan-title">Simple Saver</h3>
-            <p class="sub">Savings at TA, Pilot and Love’s with no monthly account fees</p>
+          <article class="plan">
+            <h3>Simple Saver</h3>
+            <p class="desc">Savings at TA, Pilot and Love's with no monthly account fees</p>
             <div class="price">$0</div>
-            <div class="small">monthly account fee</div>
-            <hr class="rule">
+            <div class="meta">monthly account fee</div>
+            <div class="fine">$50 one-time setup • $0 truck-stop fee</div>
+            <hr>
             <ul>
-              <li>Diesel Savings: Up to 25¢ at TA/Petro; 8¢ at Pilot and Love’s</li>
-              <li>Fraud Prevention: Custom controls and real-time alerts</li>
-              <li>Reporting: Detailed transaction visibility</li>
-              <li>Support: 24/7 customer service</li>
+              <li><strong>Diesel Savings:</strong> Up to 25¢ at TA/Petro; 8¢ at Pilot and Love's</li>
+              <li><strong>Fraud Prevention:</strong> Custom card controls and real-time alerts</li>
+              <li><strong>Reporting:</strong> Detailed transaction visibility</li>
+              <li><strong>Support:</strong> 24/7 customer service</li>
             </ul>
-            <a class="cta" href="#">Apply Now</a>
+            <a href="#" class="btn">Apply Now</a>
           </article>
 
-          <article class="card popular">
-            <div class="badge">Most Popular</div>
-            <h3 class="plan-title">Smart Fleet</h3>
-            <p class="sub">Savings nationwide plus smarter fleet tools</p>
-            <div class="price pop">$8</div>
-            <div class="small">per card / month</div>
-            <hr class="rule">
+          <article class="plan pop">
+            <div class="tag">Most Popular</div>
+            <h3>Smart Fleet</h3>
+            <p class="desc">Savings nationwide plus smarter fleet tools</p>
+            <div class="price">$8</div>
+            <div class="meta">per card / month</div>
+            <div class="fine">$50 one-time setup • $0 truck-stop fee</div>
+            <hr>
             <ul>
-              <li>Diesel Savings: Up to 25¢ at TA/Petro + 4,000+ stations</li>
-              <li>Fraud Prevention: Smart Controls with OneClick</li>
-              <li>Reporting: Enhanced reporting + optimization insights</li>
-              <li>Support: Dedicated 1-800 support line</li>
+              <li><strong>Diesel Savings:</strong> Up to 25¢ at TA/Petro, Pilot, Love's and 4,000+ stations</li>
+              <li><strong>Fraud Prevention:</strong> Smart controls with OneClick</li>
+              <li><strong>Reporting:</strong> Enhanced reporting and optimization with FleetAdvance</li>
+              <li><strong>Support:</strong> Dedicated 1-800 line</li>
             </ul>
-            <a class="cta" href="#">Apply Now</a>
+            <a href="#" class="btn">Apply Now</a>
           </article>
 
-          <article class="card">
-            <h3 class="plan-title">Total Advantage</h3>
-            <p class="sub">Maximum savings, insights, and support</p>
+          <article class="plan">
+            <h3>Total Advantage</h3>
+            <p class="desc">Maximum savings, insights, and support</p>
             <div class="price">$129</div>
-            <div class="small">per account / month</div>
-            <hr class="rule">
+            <div class="meta">per account / month</div>
+            <div class="fine">$50 one-time setup • $0 truck-stop fee</div>
+            <hr>
             <ul>
-              <li>Diesel Savings: Up to 40¢ at TA/Petro; 10¢ at Pilot</li>
-              <li>Fraud Prevention: Smart Controls with OneClick</li>
-              <li>Reporting: Full analytics and predictive pricing</li>
-              <li>Support: Assigned account manager</li>
+              <li><strong>Diesel Savings:</strong> Up to 40¢ at TA/Petro; 10¢ at Pilot; 8¢ at Love's</li>
+              <li><strong>Fraud Prevention:</strong> Smart controls with OneClick</li>
+              <li><strong>Reporting:</strong> Full analytics and predictive pricing</li>
+              <li><strong>Support:</strong> Assigned account manager</li>
             </ul>
-            <a class="cta" href="#">Apply Now</a>
+            <a href="#" class="btn">Apply Now</a>
           </article>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="container">
-        <div class="kicker">Page structure / Comdata LP redesign reference</div>
-        <h2>Comdata page rebuilt to mirror Fuelman layout and section order</h2>
+      <div class="wrap">
+        <div class="kicker">Page Structure / Comdata LP Redesign Reference</div>
+        <h2>Comdata page rebuilt to mirror Fuelman's layout and section order</h2>
         <div class="map">
-          <div class="stack">
-            <div class="box"><h3>Comdata Hero Banner</h3><p>Fuel your fleet with ease</p></div>
-            <div class="box"><h3>Plan Comparison</h3><p>Simple Saver • Smart Fleet • Total Advantage</p></div>
-            <div class="box"><h3>Network Overview</h3><p>8,000+ truck stops nationwide</p></div>
-            <div class="box"><h3>Benefits Grid</h3><p>Savings • Controls • Reporting • Support</p></div>
+          <div class="frame">
+            <div class="slot"><h4>Comdata Hero Banner</h4><p>Fuel Your Fleet with Ease</p></div>
+            <div class="slot"><h4>Plan Comparison</h4><p>Simple Saver • Smart Fleet • Total Advantage</p></div>
+            <div class="slot"><h4>Network Overview</h4><p>8,000+ truck stops nationwide</p></div>
+            <div class="slot"><h4>Benefits Grid</h4><p>Savings • Controls • Reporting • Support</p></div>
           </div>
-          <div class="list">
-            <div class="item"><span class="num">01</span><h4>Comdata Hero</h4><p>Headline/subhead updated to match Fuelman’s paid-search hero pattern with a strong CTA.</p></div>
-            <div class="item"><span class="num">02</span><h4>Plan Comparison Cards</h4><p>Three card component mirrors Fuelman’s pricing-card format with savings callouts and apply CTAs.</p></div>
-            <div class="item"><span class="num">03</span><h4>Network Overview</h4><p>Comdata’s network proof section presented in the same visual hierarchy as Fuelman reference.</p></div>
-            <div class="item"><span class="num">04</span><h4>Benefits Grid</h4><p>Core benefits mapped into scannable modules designed for paid-search users.</p></div>
+          <div>
+            <div class="point"><div class="pt"><span class="n">01</span><h4>Comdata Hero</h4></div><p>Comdata headline and subhead updated to match Fuelman's bold paid-search hero format.</p></div>
+            <div class="point"><div class="pt"><span class="n">02</span><h4>Plan Comparison Cards</h4></div><p>Three card component mirrors Fuelman's card structure with pricing callouts and apply CTAs.</p></div>
+            <div class="point"><div class="pt"><span class="n">03</span><h4>Network Overview</h4></div><p>Comdata's 8,000+ truck-stop network presented in Fuelman's visual hierarchy style.</p></div>
+            <div class="point"><div class="pt"><span class="n">04</span><h4>Benefits Grid</h4></div><p>Core benefit pillars mapped into icon-ready, scan-friendly content modules.</p></div>
           </div>
         </div>
       </div>
     </section>
   </main>
-  <footer class="container">Prototype only — style reference based on provided internal review slides.</footer>
+
+  <footer class="notice">
+    <div class="wrap">If file path errors appear, run from project folder: <code>cd /workspace/Marketing-ChatGPT && python -m http.server 4173</code> then open <code>http://127.0.0.1:4173/index.html</code>.</div>
+  </footer>
 </body>
 </html>
