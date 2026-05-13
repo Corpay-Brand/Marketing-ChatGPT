@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comdata LP Prototype</title>
+  <style>
+    :root{--navy:#071f44;--blue:#294a7a;--blue2:#213d69;--gold:#f7b32b;--text:#eaf1fb;--muted:#a9bdd8}
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--navy);color:var(--text);line-height:1.4}
+    .container{max-width:1180px;margin:0 auto;padding:0 20px}
+    .kicker{letter-spacing:.35em;text-transform:uppercase;color:var(--gold);font-weight:700;font-size:.82rem}
+    h1,h2{margin:0 0 12px} h1{font-size:clamp(2rem,5vw,3.6rem)} h2{font-size:clamp(1.6rem,3.2vw,2.7rem)}
+    .hero{padding:72px 0 48px;border-left:14px solid var(--gold)} .hero p{max-width:760px;color:#c9d7ea;font-size:1.25rem}
+    .cta{display:inline-block;background:var(--gold);color:#071f44;padding:14px 28px;font-weight:800;border-radius:2px;text-decoration:none;letter-spacing:.14em;text-transform:uppercase;margin-top:16px}
+
+    .section{padding:54px 0}
+    .intro{color:#c4d3e8;font-size:1.35rem;font-style:italic;margin-bottom:20px}
+    .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .card{background:var(--blue2);border:1px solid #3f5c8b;padding:26px 24px;display:flex;flex-direction:column}
+    .card.popular{background:var(--blue);position:relative;outline:6px solid #38598c}
+    .badge{position:absolute;top:16px;right:16px;background:var(--gold);color:#0c244f;padding:10px 14px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.8rem}
+    .plan-title{font-size:2rem;letter-spacing:.1em;font-weight:800;margin:8px 0}
+    .sub{color:var(--muted);font-style:italic;font-size:1.05rem;margin:0 0 22px}
+    .price{font-size:4rem;font-weight:800;color:#fff;line-height:1}
+    .price.pop{color:var(--gold)}
+    .small{color:var(--muted);margin:6px 0 18px}
+    .rule{border:none;height:1px;background:#496390;margin:12px 0 16px}
+    ul{padding-left:18px;margin:0 0 22px} li{margin:8px 0;color:#d8e4f6}
+    .card .cta{margin-top:auto;text-align:center;width:100%}
+
+    .map{display:grid;grid-template-columns:1.1fr 1fr;gap:34px;margin-top:20px}
+    .stack .box{background:#2f4f80;border:2px solid var(--gold);padding:26px;margin-bottom:16px}
+    .stack h3{margin:0;font-size:2rem}
+    .stack p{margin:10px 0 0;color:#c7d7ef;font-style:italic}
+    .list .item{margin-bottom:24px}
+    .num{font-size:2.3rem;color:var(--gold);font-weight:900;display:inline-block;width:72px}
+    .list h4{display:inline-block;margin:0;font-size:2rem}
+    .list p{margin:8px 0 0 72px;color:#c4d4ec}
+
+    footer{padding:32px 0 56px;color:#8fa6c7}
+    @media(max-width:980px){.plans{grid-template-columns:1fr}.map{grid-template-columns:1fr}.hero{border-left-width:8px}}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <div class="kicker">Internal review / paid search + lp</div>
+      <h1>Comdata LP Redesign Prototype</h1>
+      <p>Redesigned Comdata paid-search landing page using Fuelman’s high-performing structure, with Comdata-focused messaging and conversion-first section flow.</p>
+      <a class="cta" href="#plans">View Plan Comparison</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="plans" class="section">
+      <div class="container">
+        <div class="kicker">Comdata LP redesign / plan comparison component</div>
+        <h2>Find the fuel card that fits your fleet</h2>
+        <p class="intro">Choose from Simple Saver, Smart Fleet, or Total Advantage to manage fuel and savings for your fleet.</p>
+        <div class="plans">
+          <article class="card">
+            <h3 class="plan-title">Simple Saver</h3>
+            <p class="sub">Savings at TA, Pilot and Love’s with no monthly account fees</p>
+            <div class="price">$0</div>
+            <div class="small">monthly account fee</div>
+            <hr class="rule">
+            <ul>
+              <li>Diesel Savings: Up to 25¢ at TA/Petro; 8¢ at Pilot and Love’s</li>
+              <li>Fraud Prevention: Custom controls and real-time alerts</li>
+              <li>Reporting: Detailed transaction visibility</li>
+              <li>Support: 24/7 customer service</li>
+            </ul>
+            <a class="cta" href="#">Apply Now</a>
+          </article>
+
+          <article class="card popular">
+            <div class="badge">Most Popular</div>
+            <h3 class="plan-title">Smart Fleet</h3>
+            <p class="sub">Savings nationwide plus smarter fleet tools</p>
+            <div class="price pop">$8</div>
+            <div class="small">per card / month</div>
+            <hr class="rule">
+            <ul>
+              <li>Diesel Savings: Up to 25¢ at TA/Petro + 4,000+ stations</li>
+              <li>Fraud Prevention: Smart Controls with OneClick</li>
+              <li>Reporting: Enhanced reporting + optimization insights</li>
+              <li>Support: Dedicated 1-800 support line</li>
+            </ul>
+            <a class="cta" href="#">Apply Now</a>
+          </article>
+
+          <article class="card">
+            <h3 class="plan-title">Total Advantage</h3>
+            <p class="sub">Maximum savings, insights, and support</p>
+            <div class="price">$129</div>
+            <div class="small">per account / month</div>
+            <hr class="rule">
+            <ul>
+              <li>Diesel Savings: Up to 40¢ at TA/Petro; 10¢ at Pilot</li>
+              <li>Fraud Prevention: Smart Controls with OneClick</li>
+              <li>Reporting: Full analytics and predictive pricing</li>
+              <li>Support: Assigned account manager</li>
+            </ul>
+            <a class="cta" href="#">Apply Now</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="kicker">Page structure / Comdata LP redesign reference</div>
+        <h2>Comdata page rebuilt to mirror Fuelman layout and section order</h2>
+        <div class="map">
+          <div class="stack">
+            <div class="box"><h3>Comdata Hero Banner</h3><p>Fuel your fleet with ease</p></div>
+            <div class="box"><h3>Plan Comparison</h3><p>Simple Saver • Smart Fleet • Total Advantage</p></div>
+            <div class="box"><h3>Network Overview</h3><p>8,000+ truck stops nationwide</p></div>
+            <div class="box"><h3>Benefits Grid</h3><p>Savings • Controls • Reporting • Support</p></div>
+          </div>
+          <div class="list">
+            <div class="item"><span class="num">01</span><h4>Comdata Hero</h4><p>Headline/subhead updated to match Fuelman’s paid-search hero pattern with a strong CTA.</p></div>
+            <div class="item"><span class="num">02</span><h4>Plan Comparison Cards</h4><p>Three card component mirrors Fuelman’s pricing-card format with savings callouts and apply CTAs.</p></div>
+            <div class="item"><span class="num">03</span><h4>Network Overview</h4><p>Comdata’s network proof section presented in the same visual hierarchy as Fuelman reference.</p></div>
+            <div class="item"><span class="num">04</span><h4>Benefits Grid</h4><p>Core benefits mapped into scannable modules designed for paid-search users.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="container">Prototype only — style reference based on provided internal review slides.</footer>
+</body>
+</html>
